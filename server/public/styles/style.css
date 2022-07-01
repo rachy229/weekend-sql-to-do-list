@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+    border-color: rgb(71, 168, 189);
+    background-color: rgb(235, 148, 134);
+    color: rgb(30, 56, 136);
+    border-width: 5px;
+    border-style: solid;
+}
+
+body{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(212, 194, 252);
+}
+
+#taskList{
+    background-color: rgb(245, 230, 99);
+}
