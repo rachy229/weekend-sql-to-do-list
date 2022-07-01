@@ -12,6 +12,7 @@ body{
     background-color: rgb(212, 194, 252);
 }
 
-#taskList{
+h2{
     background-color: rgb(245, 230, 99);
+    padding: 20px;
 }
