@@ -9,3 +9,13 @@ function onReady() {
 function handleAddClick(){
     console.log('add click!');
 }
+
+function getTasks() {
+    $.ajax({
+        type: 'GET',
+        url: '/tasks'
+    }).then (function(response) {
+        console.log('GET /tasks response:', response);
+        renderTasks();
+    })
+};
