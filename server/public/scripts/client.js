@@ -26,9 +26,18 @@ function getTasks() {
         for (let i = 0; i < response.length; i++) {
 
             $('#taskList').append(`
-                <li>${response[i].name}</li>
-                <button id="complete-btn" data-id="${response[i].id}" data-status="${response[i].status}">Complete</button>
-                <button id="delete-btn" data-id="${response[i].id}">Delete</button>
+            <tr>
+                <td>${response[i].name}</td>
+                <td> 
+                    <button id="complete-btn" data-id="${response[i].id}" 
+                        data-status="${response[i].status}">Complete 
+                    </button> 
+                </td>
+                <td>
+                    <button id="delete-btn" data-id="${response[i].id}">Delete
+                    </button>
+                </td>
+            </tr>
                 `
             )
         }

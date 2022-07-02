@@ -39,4 +39,9 @@ router.post('/', (req, res) => {
     })
 });
 
+router.put('/status/:id', (req,res) => {
+    let taskId = req.params.id;
+    let status = req.body.status;
+})
+
 module.exports = router;
