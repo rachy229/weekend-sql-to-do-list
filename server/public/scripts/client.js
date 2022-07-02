@@ -4,11 +4,14 @@ function onReady() {
     console.log('linked!')
     getTasks();
 //click listeners
-    $('#add').on('click', handleAddClick);
+    $('#add').on('click', addTask);
 }
 
 function handleAddClick(){
-    console.log('add click!');
+    // console.log('add click!');
+    // let newTask = {};
+    // newTask.name = $('#taskIn').val();
+    // addTask(newTask);
 }
 
 function getTasks() {
@@ -25,3 +28,17 @@ function getTasks() {
         }
     })
 };
+
+function addTask() {
+    console.log('add click!');
+    let newTask = {};
+    newTask.name = $('#taskIn').val();
+    $.ajax({
+        type: 'POST',
+        url: '/tasks',
+        data: newTask
+    }).then(function(response) {
+        $('#taskIn').val('');
+        getTasks();
+    })
+}
