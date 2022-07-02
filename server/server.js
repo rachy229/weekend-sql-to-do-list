@@ -13,7 +13,7 @@ app.use(express.static('server/public'));
 // Setup the songs router
 // to respond to requests from the `/songs` URL
 
-app.use('./routes/tasks.router', tasksRouter);
+app.use('/tasks', tasksRouter);
 
 
 // Start express

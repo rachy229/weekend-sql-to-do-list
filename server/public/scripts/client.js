@@ -14,14 +14,14 @@ function handleAddClick(){
 function getTasks() {
     $.ajax({
         type: 'GET',
-        url: '.server/routes/tasks.router.js'
+        url: '/tasks'
     }).then (function(response) {
         console.log('GET /tasks response:', response);
         for (let i = 0; i < response.length; i++) {
-            $('#taskList'.append(`
+            $('#taskList').append(`
                 <li>${response[i].name}</li>
                 `
-            ))
+            )
         }
     })
 };
