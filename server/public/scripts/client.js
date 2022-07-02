@@ -28,6 +28,7 @@ function getTasks() {
             $('#taskList').append(`
             <tr>
                 <td>${response[i].name}</td>
+                <td>${response[i].status}</td>
                 <td> 
                     <button id="complete-btn" data-id="${response[i].id}" 
                         data-status="${response[i].status}">Complete 
@@ -68,7 +69,7 @@ function completeTask() {
 
     $.ajax({
         method: 'PUT',
-        url: `/books/status/${taskId}`,
+        url: `/tasks/status/${taskId}`,
         data: {status: status}
     }).then(function() {
         getTasks();

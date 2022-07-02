@@ -10,7 +10,7 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     // res.send(songs);
-    let queryText = 'SELECT * FROM "tasks";';
+    let queryText = 'SELECT * FROM "tasks" ORDER BY "id";';
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -42,6 +42,26 @@ router.post('/', (req, res) => {
 router.put('/status/:id', (req,res) => {
     let taskId = req.params.id;
     let status = req.body.status;
+    let queryText;
+    
+    if(status === 'true') {
+        console.log('in router.put: true')
+        queryText = `UPDATE "tasks" SET "status" = false WHERE id = $1;`;
+    } else if (status === 'false') {
+        console.log('in router.put: false')
+        queryText = `UPDATE "tasks" SET "status" = true WHERE id = $1;`;
+    } else {
+        res.sendStatus(500);
+        return;
+    }
+
+    pool.query(queryText, [taskId])
+    .then((dbResponse) => {
+        res.send(dbResponse.rows);
+    }).catch((error) => {
+        console.log(`ERROR updating with query ${queryText}: ${error}`);
+        res.sendStatus(500);
+    })
 })
 
 module.exports = router;
