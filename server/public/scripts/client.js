@@ -2,6 +2,7 @@ $(onReady);
 
 function onReady() {
     console.log('linked!')
+    getTasks();
 //click listeners
     $('#add').on('click', handleAddClick);
 }
@@ -13,9 +14,14 @@ function handleAddClick(){
 function getTasks() {
     $.ajax({
         type: 'GET',
-        url: '/tasks'
+        url: '.server/routes/tasks.router.js'
     }).then (function(response) {
         console.log('GET /tasks response:', response);
-        renderTasks();
+        for (let i = 0; i < response.length; i++) {
+            $('#taskList'.append(`
+                <li>${response[i].name}</li>
+                `
+            ))
+        }
     })
 };
