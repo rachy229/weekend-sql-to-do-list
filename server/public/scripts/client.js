@@ -27,7 +27,7 @@ function getTasks() {
 
             $('#taskList').append(`
                 <li>${response[i].name}</li>
-                <button id="complete-btn" data-id="${response[i].id}" >Complete</button>
+                <button id="complete-btn" data-id="${response[i].id}" data-status="${response[i].status}">Complete</button>
                 <button id="delete-btn" data-id="${response[i].id}">Delete</button>
                 `
             )
@@ -52,7 +52,22 @@ function addTask() {
 
 function completeTask() {
     console.log('complete clicked!');
+    let taskId = $(this).data('id');
+    let status = $(this).data('status');
+    console.log('taskId in completeTask:', taskId);
+    console.log('status in completeTask:', status);
+
+    $.ajax({
+        method: 'PUT',
+        url: `/books/status/${taskId}`,
+        data: {status: status}
+    }).then(function() {
+        getTasks();
+    }).catch(function(error) {
+        alert('ERROR in completeTask', error);
+    })
 }
+
 
 function deleteTask() {
     console.log('delete clicked!');
