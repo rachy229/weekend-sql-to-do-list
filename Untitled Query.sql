@@ -1,16 +1,12 @@
 CREATE TABLE tasks (
 id SERIAL,
-name varchar(50)
-);
-DROP TABLE "tasks";
-CREATE TABLE tasks (
-id SERIAL,
-name VARCHAR(100)
+name varchar(50),
+status varchar(10)
 );
 
 INSERT INTO "tasks"
-("name")
+("name", "status")
 VALUES
-('serenade my cats'),
-('comtemplate existence'),
-('eat cheese');
+('serenade my cats', 'false'),
+('comtemplate existence', 'false'),
+('eat cheese', 'false');

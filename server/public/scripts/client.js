@@ -17,12 +17,14 @@ function handleAddClick(){
 }
 
 function getTasks() {
+    $('#taskList').empty();
     $.ajax({
         type: 'GET',
         url: '/tasks'
     }).then (function(response) {
         console.log('GET /tasks response:', response);
         for (let i = 0; i < response.length; i++) {
+
             $('#taskList').append(`
                 <li>${response[i].name}</li>
                 <button id="complete-btn" data-id="${response[i].id}" >Complete</button>
@@ -37,6 +39,7 @@ function addTask() {
     console.log('add click!');
     let newTask = {};
     newTask.name = $('#taskIn').val();
+    newTask.status = 'false';
     $.ajax({
         type: 'POST',
         url: '/tasks',
