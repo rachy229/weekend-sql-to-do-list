@@ -25,11 +25,11 @@ router.post('/', (req, res) => {
     // songs.push(req.body);
     // res.sendStatus(200);
     const newTask = req.body;
-    const queryText = `
-        INSERT INTO "tasks" ("name")
-        VALUES ($1);
-    `;
-    pool.query(queryText, [newTask.name])
+    console.log('newTask in router.post', newTask);
+    const queryText = 
+        `INSERT INTO "tasks" ("name", "status")
+        VALUES ($1, $2);`;
+    pool.query(queryText, [newTask.name, newTask.status])
     .then( (result) => {
         res.sendStatus(201);
     })
@@ -60,6 +60,20 @@ router.put('/status/:id', (req,res) => {
         res.send(dbResponse.rows);
     }).catch((error) => {
         console.log(`ERROR updating with query ${queryText}: ${error}`);
+        res.sendStatus(500);
+    })
+})
+
+router.delete('/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log(`DELETE request sent for id ${reqId}`);
+    let queryText = `DELETE FROM "tasks" WHERE "id" = $1`;
+    pool.query(queryText, [reqId])
+    .then(() => {
+        console.log('task deleted!');
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`ERROR in DELETE with query ${queryText}: ${error}`);
         res.sendStatus(500);
     })
 })
