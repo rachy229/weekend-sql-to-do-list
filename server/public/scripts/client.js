@@ -9,13 +9,6 @@ function onReady() {
     $('#taskList').on('click', '#delete-btn', deleteTask);
 }
 
-function handleAddClick(){
-    // console.log('add click!');
-    // let newTask = {};
-    // newTask.name = $('#taskIn').val();
-    // addTask(newTask);
-}
-
 function getTasks() {
     $('#taskList').empty();
     $.ajax({
@@ -26,12 +19,12 @@ function getTasks() {
         for (let i = 0; i < response.length; i++) {
 
             $('#taskList').append(`
-            <tr>
+            <tr data-status="${response[i].status}">
                 <td>${response[i].name}</td>
                 <td>${response[i].status}</td>
                 <td> 
                     <button id="complete-btn" data-id="${response[i].id}" 
-                        data-status="${response[i].status}">Complete 
+                    data-status="${response[i].status}">Complete 
                     </button> 
                 </td>
                 <td>

@@ -16,3 +16,18 @@ h2{
     background-color: rgb(245, 230, 99);
     padding: 20px;
 }
+
+table, th, td {
+    /* background-color: rgb(245, 230, 99); */
+    border: 3px solid;
+    border-color: rgb(30, 56, 136);
+    border-collapse: collapse;
+}
+
+th, td {
+    width: 50%;
+}
+
+[data-status= "true"] {
+    background-color: pink;
+}
