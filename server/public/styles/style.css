@@ -1,20 +1,30 @@
 h1 {
     text-align: center;
-    border-color: rgb(71, 168, 189);
-    background-color: rgb(235, 148, 134);
-    color: rgb(30, 56, 136);
-    border-width: 5px;
-    border-style: solid;
+    padding: 20px;
+    border-color: rgb(0, 175, 185);
+    background-color: rgb(0, 129, 167);
+    color: rgb(1, 1, 1);
+    border-width: 10px;
+    border-style: double;
 }
 
 body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: rgb(212, 194, 252);
+    /* background-color: rgb(254, 217, 183); */
+    /* background-color: rgb(240, 113, 103) */
+    background-color: rgb(253, 252, 220);
+
+
 }
 
 h2{
-    background-color: rgb(245, 230, 99);
-    padding: 20px;
+    background-color: rgb(0, 175, 185);
+    padding: 10px;
+    border-color: rgb(0, 129, 167);
+    ;
+    border-width: 5px;
+    border-style: solid;
+    text-align: center;
 }
 
 table, th, td {
@@ -29,5 +39,14 @@ th, td {
 }
 
 [data-status= "true"] {
-    background-color: pink;
+    background-color: rgb(240, 208, 103)
+}
+
+table{
+    /* background-color: rgb(253, 252, 220); */
+    background-color: rgb(254, 217, 183);
+
+}
+th{
+    background-color: rgb(240, 113, 103)
 }
